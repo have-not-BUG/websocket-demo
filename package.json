@@ -1,0 +1,19 @@
+{
+  "name": "test-websocket",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "counter": "websocketd --port=8080 node counter.js",
+    "greeter": "websocketd --port=8080 node greeter.js",
+    "chat": "websocketd --port=8080 bash chat"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "socket.io": "~4.3.1",
+    "websocket": "~1.0.34"
+  }
+}

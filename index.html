@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+<!--<script src="https://cdn.jsdelivr.net/npm/socket.io-client@4.3.2/dist/socket.io.min.js"></script>-->
+
+<script>
+    // const socket = io("ws://localhost:4000");
+  // var ws = new WebSocket("ws://10.0.203.141:3000");
+
+  var ws = new WebSocket("ws://localhost:8080");
+  //
+  switch (ws.readyState) {
+    case WebSocket.CONNECTING:
+      console.log('正在连接...',WebSocket.CONNECTING)
+      // do something
+      break;
+    case WebSocket.OPEN:
+      console.log('连接成功')
+
+      // do something
+      break;
+    case WebSocket.CLOSING:
+      console.log('连接CLOSING')
+
+      // do something
+      break;
+    case WebSocket.CLOSED:
+      console.log('连接CLOSED')
+
+      // do something
+      break;
+    default:
+      // this never happens
+      console.log('未知状态')
+      break;
+  }
+
+  // ws.onopen = function(evt) {
+  //   console.log("Connection open ...",evt);
+  //   ws.send("Hello WebSockets!");
+  // };
+
+  // ws.onmessage = function(evt) {
+  //   console.log( "Received Message: " + evt.data);
+  //   ws.close();
+  // };
+
+  // ws.onclose = function(evt) {
+  //   console.log("Connection closed.",evt);
+  // };
+
+  ws.addEventListener('open', function (event) {
+    console.log("连接打开了",event);
+    ws.send('11111');
+    ws.send('2222');
+    ws.send('3333');
+    ws.send('4444');
+  });
+
+
+
+  ws.addEventListener("message", function(event) {
+    // console.log('ws.binaryType为',ws.binaryType)
+    var data = event.data;
+    console.log('接收到的信息为',data)
+    // if(typeof event.data === 'string') {
+    //   console.log("接收到的数据类型为string");
+    // }
+    //
+    // if(event.data instanceof ArrayBuffer){
+    //   var buffer = event.data;
+    //   console.log("Received arraybuffer",event.data.byteLength);
+    // }
+
+    //
+    // if(event.data instanceof Blob){
+    //   var blob = event.data;
+    //   console.log("Received blob",event.data.size);
+    // }
+
+  });
+
+
+  ws.addEventListener("close", function(event) {
+    var code = event.code;
+    var reason = event.reason;
+    var wasClean = event.wasClean;
+    console.log('连接关闭了',{code,reason,wasClean})
+    // handle close event
+  });
+
+  ws.addEventListener("error", function(event) {
+    console.error('出错了',event)
+    // handle error event
+  });
+</script>
+</html>
