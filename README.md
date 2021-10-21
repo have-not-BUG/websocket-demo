@@ -1,4 +1,5 @@
-后端采用websocketd的简单的websocket demo。
+后端采用websocketd的简单的websocket demo。推荐资料：https://www.ruanyifeng.com/blog/2017/05/websocket.html
+
 
 ### 一、环境要求
 1、Windows64
